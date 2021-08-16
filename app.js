@@ -8,14 +8,13 @@ const getData = () => {
 
 const throttle = (fn, delay) => {
   let prev = 0;
-
   return function (...args) {
     const now = new Date().getTime();
-    if (prev - delay < 0) {
+    if (now - prev < delay) {
       return;
     }
     prev = now;
-    return fn(...args);
+    fn();
   };
 };
 
